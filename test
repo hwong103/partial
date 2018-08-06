@@ -1,0 +1,10 @@
+%%[ 
+VAR @ContactId,@AccountId,@Name,@URL
+SET @ContactId = SubscriberKey
+SET @AccountId = Lookup("SS Tax Receipt Population","Account ID","Contact ID",@ContactId) 
+SET @Name = Lookup("SS Tax Receipt Population","Contact First Name","Contact ID",@ContactId) 
+
+SET @URL = TRIM(HTTPGet(Concat('https://api-ssl.bitly.com/v3/shorten?access_token=6c6d609cd55a8b9d1992dbbe5c116ce8e84ba3af&format=txt&longUrl=http://www.tfaforms.com/391851?conId=',@ContactId,'&accId=',@AccountId))) 
+]%% 
+
+Hi %%=v(@Name)=%% it's Eliza from Starlight! Thanks for your support! Please update your details here %%=v(TRIM(@URL))=%% so we can email you your tax receipt.
