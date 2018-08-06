@@ -11,7 +11,6 @@ public static Map<String, Id> oppyMap     = new Map<String, Id>();
 public static Id gatewayId;
 public static List<User> userList = new List<User>();
 
-
 public static void toggleTriggerControlsInstance(Boolean boo)
 {
     TriggerControls__c tc = new TriggerControls__c();
